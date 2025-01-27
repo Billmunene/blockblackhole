@@ -1,4 +1,3 @@
-// Import the Sentiment library for sentiment analysis
 import Sentiment from "sentiment";
 
 /**
@@ -14,15 +13,15 @@ const sentiment = new Sentiment();
  */
 export const analyzeSentiment = async (text: string): Promise<"Good" | "Bad" | "Neutral"> => {
   try {
-    // Analyze the sentiment of the input text using the Sentiment library
+    // Analyze the sentiment of the input text
     const result = sentiment.analyze(text);
 
     // Determine the sentiment classification based on the score
-    if (result.score > 0) return "Good"; // Positive sentiment
-    if (result.score < 0) return "Bad"; // Negative sentiment
-    return "Neutral"; // Neutral sentiment if score is 0
+    if (result.score > 0) return "Good";
+    if (result.score < 0) return "Bad";
+    return "Neutral";
   } catch (error) {
-    // If an error occurs during sentiment analysis, handle it by throwing a custom error message
+    // Narrow down the error type and access its message
     if (error instanceof Error) {
       throw new Error("Failed to analyze sentiment: " + error.message);
     }
